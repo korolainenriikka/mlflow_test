@@ -1,0 +1,9 @@
+name: digit-recognition
+
+docker_env:
+    image: mnist-dockerized
+
+entry_points:
+  main:
+    command: "python train.py"
+
