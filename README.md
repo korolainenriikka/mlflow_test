@@ -59,9 +59,9 @@ these instructions expect that you
 
 * add your user to the unix group docker with `sudo usermod -aG docker $USER`
 
-* run this model with `mlflow run [http url to git repo]`
-
 #### Run the project
+
+* run this model with `mlflow run https://github.com/korolainenriikka/mlflow_test.git`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded
 
 ### Improvements
 
