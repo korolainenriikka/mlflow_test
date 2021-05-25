@@ -18,16 +18,12 @@ these instructions expect that you
     * go to Compute/Key pairs and add your computer's public ssh key by clicking 'Import Public key'
      or (if you have no ssh key pair on your device) create key pair with 'Create Key Pair' and save the downloaded .pem file
 
-* set up firewall & security groups
- 
- !! security settings have been moved in the ui after the tutorials above were made, current locations below:
-    
-    * Go to Compute/Network/Security Groups. Click 'Create Security Group' and add name and description
+* set up firewall & security groups (!security settings have been moved in the ui after the tutorials above were made, current locations below:)
+    * go to Compute/Network/Security Groups. Click 'Create Security Group' and add name and description
     * click 'Manage Rules' for the newly created security group
-    * leave other fields to defaults, and insert '22' as port number (SSH port) and your IP address to the CIDR field. Use [your ip]/32 to only add one IP address.
-      run `curl -4 ident.me` to get your IP (or use another find-your-IP service)
+    * leave other fields to defaults, and insert '22' as port number (SSH port) and your IP address to the CIDR field. Use [your ip]/32 to only add one IP address. Run `curl -4 ident.me` to get your IP (or use another find-your-IP service)
             
-* create & run a virtual machine instance
+3. create & run a virtual machine instance
                
 * lauch a VM instance
     * Go to Instances and click 'Lauch Instance'. Choose image (operating system) and flavour (amount of resources). If you increase the 'Number of Instances', chosen amount of copies of the virtual machine will be instantiated. On the access&security tab choose your key pair and the security group you created. Check on the Network tab that your projects' network is chosen (should be by default)
