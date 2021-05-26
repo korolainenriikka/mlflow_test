@@ -19,5 +19,4 @@ sudo apt-get update &&
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io &&
 
 sudo apt-get install -y docker-ce=5:20.10.6~3-0~ubuntu-focal docker-ce-cli=5:20.10.6~3-0~ubuntu-focal containerd.io &&
-sudo usermod -aG docker $USER &&
-exit
+sudo usermod -aG docker $USER 
