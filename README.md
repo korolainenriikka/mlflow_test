@@ -47,11 +47,11 @@ these instructions expect that you
 
 * run `mv mlflow_test/vmsetup.sh . && chmod u+x vmsetup.sh && ./vmsetup.sh`
 
-* reconnect to VM with the command `ssh -l ubuntu [VM's floating IP]`
+* exit and reconnect to apply granted privileges: `exit && ssh -l ubuntu [VM's floating IP]`
 
 #### Run the project
 
-* run this model with `mlflow run https://github.com/korolainenriikka/mlflow_test.git`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded
+* run this model with `source venv/bin/activate && mlflow run https://github.com/korolainenriikka/mlflow_test.git`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded
 
 ### Improvements
 
