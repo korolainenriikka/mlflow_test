@@ -45,7 +45,7 @@ these instructions expect that you
 
 * clone this project: run `git clone https://github.com/korolainenriikka/mlflow_test.git`
 
-* run `mv mlflow_test/vmsetup.sh && chmod u+x vmsetup.sh && ./vmsetup.sh`
+* run `mv mlflow_test/vmsetup.sh . && chmod u+x vmsetup.sh && ./vmsetup.sh`
 
 * reconnect to VM with the command `ssh -l ubuntu [VM's floating IP]`
 
