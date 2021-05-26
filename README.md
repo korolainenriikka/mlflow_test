@@ -41,19 +41,13 @@ these instructions expect that you
 
 #### Install MLflow requirements
 
-(these instructions work on a Ubuntu 20 VM)
+(these instructions work with ubuntu 20)
 
-* install pip: run `sudo apt-get update && sudo apt install python3-pip`
- 
-* install python venv: `sudo apt-get install python3-venv`
+* pull this project: run `git pull https://github.com/korolainenriikka/mlflow_test.git`
 
-* create a new virtual env and activate it: `python3 -m venv venv && source venv/bin/activate`
- 
-* install mlflow with `pip install mlflow`
+* run `mv mlflow_test/vmsetup.sh && chmod u+x vmsetup.sh && ./vmsetup.sh`
 
-* install docker as instructed in [docker installation instructions](https://docs.docker.com/engine/install/ubuntu/)
-
-* add your user to the unix group docker with `sudo usermod -aG docker $USER`
+* reconnect to VM with the command `ssh -l ubuntu [VM's floating IP]`
 
 #### Run the project
 
@@ -63,5 +57,5 @@ these instructions expect that you
 
   * volumes for storing the results
   
-  * automation tool for setting up the VM
+  * further automation
 
