@@ -43,7 +43,7 @@ these instructions expect that you
 
 (these instructions work with ubuntu 20)
 
-* pull this project: run `git pull https://github.com/korolainenriikka/mlflow_test.git`
+* clone this project: run `git clone https://github.com/korolainenriikka/mlflow_test.git`
 
 * run `mv mlflow_test/vmsetup.sh && chmod u+x vmsetup.sh && ./vmsetup.sh`
 
