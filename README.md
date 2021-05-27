@@ -43,6 +43,20 @@ these instructions expect that you
 
 (these instructions work with ubuntu 20)
 
+* install pip: run `sudo apt-get update && sudo apt install python3-pip`
+ 
+* install python venv: `sudo apt-get install python3-venv`
+
+* create a new virtual env and activate it: `python3 -m venv venv && source venv/bin/activate`
+ 
+* install mlflow with `pip install mlflow`
+
+* install docker as instructed in [docker installation instructions](https://docs.docker.com/engine/install/ubuntu/)
+
+* add your user to the unix group docker with `sudo usermod -aG docker $USER`
+
+shortcut for the above, does not work yet:
+
 * clone this project: run `git clone https://github.com/korolainenriikka/mlflow_test.git`
 
 * run `mv mlflow_test/vmsetup.sh . && chmod u+x vmsetup.sh && ./vmsetup.sh`
