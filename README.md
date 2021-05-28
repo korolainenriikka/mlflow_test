@@ -43,33 +43,21 @@ these instructions expect that you
 
 (these instructions work with ubuntu 20)
 
-* install pip: run `sudo apt-get update && sudo apt install python3-pip`
- 
-* install python venv: `sudo apt-get install python3-venv`
-
-* create a new virtual env and activate it: `python3 -m venv venv && source venv/bin/activate`
- 
-* install mlflow with `pip install mlflow`
-
-* install docker as instructed in [docker installation instructions](https://docs.docker.com/engine/install/ubuntu/)
-
-* add your user to the unix group docker with `sudo usermod -aG docker $USER`
-
-shortcut for the above, does not work yet:
-
 * clone this project: run `git clone https://github.com/korolainenriikka/mlflow_test.git`
 
 * run `mv mlflow_test/vmsetup.sh . && chmod u+x vmsetup.sh && ./vmsetup.sh`
 
-* exit and reconnect to apply granted privileges: `exit && ssh -l ubuntu [VM's floating IP]`
+* run `logout` to close ssh connection, shut off and re-launch the virtual machine in the cPouta web portal (this is required for the privilege modifications to take effect)
 
 #### Run the project
 
-* run this model with `source venv/bin/activate && mlflow run https://github.com/korolainenriikka/mlflow_test.git`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded
+* build Docker image: `cd mlflow_test && docker build -t mnist-dockerized -f Dockerfile .`
+
+* run this model with `source venv/bin/activate && mlflow run mlflow_test`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded
 
 ### Improvements
 
-  * volumes for storing the results
+  * data storage in a volume & data versioning
   
-  * further automation
+  * results saved to git
 
