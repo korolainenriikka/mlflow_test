@@ -1,5 +1,7 @@
 import gzip
 import numpy as np
+import sys
+import os
 import mlflow
 
 from sklearn.naive_bayes import GaussianNB
@@ -12,10 +14,13 @@ def read_gz(filename):
     return contents
 
 if __name__ == "__main__":
-    train_labels_bytes = read_gz('data/train-labels-idx1-ubyte.gz')
-    train_images = read_gz('data/train-images-idx3-ubyte.gz')
-    test_images = read_gz('data/t10k-images-idx3-ubyte.gz')
-    test_labels_bytes = read_gz('data/t10k-labels-idx1-ubyte.gz')
+    current_dir = os.getcwd()
+    print(current_dir)
+    path_to_data = sys.argv[2]
+    train_labels_bytes = read_gz(path_to_data + 'train-labels-idx1-ubyte.gz')
+    train_images = read_gz(path_to_data + 'train-images-idx3-ubyte.gz')
+    test_images = read_gz(path_to_data + 't10k-images-idx3-ubyte.gz')
+    test_labels_bytes = read_gz(path_to_data + 't10k-labels-idx1-ubyte.gz')
     
     train_labels_int = [x for x in train_labels_bytes]
     train_labels = np.array(train_labels_int[8:])

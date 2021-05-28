@@ -5,5 +5,7 @@ docker_env:
 
 entry_points:
   main:
-    command: "python train.py"
+    parameters:
+      path-to-data: {type: string, default: './data'}
+    command: "python train.py --path-to-data {path-to-data}"
 
