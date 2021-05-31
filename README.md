@@ -1,5 +1,7 @@
 # Sample project for ML pipeline testing
 
+this is currently work-in-progress: data i s moved to its own repository & volume setup instructions are still missing
+
 these instructions expect that you
   * have a valid CSC account
   * you are added to a project and granted access to servers
@@ -53,7 +55,7 @@ these instructions expect that you
 
 * build Docker image: `cd mlflow_test && docker build -t mnist-dockerized -f Dockerfile .`
 
-* run this model from the home directory with `source venv/bin/activate && mlflow run mlflow_test`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded. Metrics are saved to the `mlruns` directory.
+* run this model from the home directory with `source venv/bin/activate && mlflow run mlflow_test -P path-to-data=/`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded. Metrics are saved to the `mlruns` directory.
 
 ### Improvements
 
