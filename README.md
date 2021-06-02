@@ -1,12 +1,14 @@
 # Sample project for ML pipeline testing
 
-this is currently work-in-progress: data i s moved to its own repository & volume setup instructions are still missing
+this workflow:
+  * creates a virtual machine and volume, sets them up and connects them to one another
+  * copies data and mlflow project from git to the virtual env and runs the model
 
 these instructions expect that you
   * have a valid CSC account
   * you are added to a project and granted access to servers
 
-### Setup instructions
+### Initial setup instructions
 
 #### Create and run a virtual machine instance & connect remotely
 
@@ -28,18 +30,18 @@ these instructions expect that you
 3. create & run a virtual machine instance
                
 * lauch a VM instance
-    * Go to Instances and click 'Lauch Instance'. Choose image (operating system) and flavour (amount of resources). If you increase the 'Number of Instances', chosen amount of copies of the virtual machine will be instantiated. On the access&security tab choose your key pair and the security group you created. Check on the Network tab that your projects' network is chosen (should be by default)
+    * Go to Instances and click 'Lauch Instance'. Choose image (operating system) and flavour (amount of resources). On the access&security tab choose your key pair and the security group you created.
 
-* associate a floating ip (by default the virtual machines only have private IPs)
+* associate a floating IP (by default the virtual machines only have private IPs)
     * on Instances tab in your vm instances' actions choose 'Associate Floating IP'. Choose IP or if none are present, click on the + to allocate a new one. Then click 'Associate'
 
 * connect to the vm remotely
 
     * check the following:
-        * if your ssh-agent is running and if not, launch it
+        * if your ssh-agent is running and if not, launch it with `eval $(ssh-agent)` (ubuntu 18)
         * your ssh private key is added to your ssh keychain: run `ssh-add [path to key]` to add the key
         
-    * run `ssh -l cloud-user [VM's floating IP]` to connect to CentOS, or `ssh -l ubuntu [VM's floating IP]` to connect to ubuntu
+    * run `ssh -l ubuntu [VM's floating IP]` to connect (Ubuntu VM)
 
 #### Install MLflow requirements
 
@@ -51,15 +53,29 @@ these instructions expect that you
 
 * run `logout` to close ssh connection, shut off and re-launch the virtual machine in the cPouta web portal (this is required for the privilege modifications to take effect)
 
+#### Create a volume & mount to virtual machine
+
+* Create a volume: on the web portal go to Volumes/Volumes and click Create Volume. Name the volume, add description and choose size. Choose "no source" as volume source.
+
+* Connect volume to the VM: go to Compute/Instances and in the Actions dropdown choose 'Attach Volume'. Choose the volume and click 'Attach'.
+
+* On the VM terminal: run `mv mlflow_test/volumesetup.sh . && chmod u+x volume.sh && ./volumesetup.sh`
+
+## Running the MLflow project
+
+#### Copy data to the volume
+
+* On your local machine: run `git clone https://github.com/korolainenriikka/mnist-data.git` to clone the data
+
+* To copy the data to the volume run `cd mnist-data && scp -i [path-to-private-key-file] *.gz ubuntu@[vm floating IP]:/media/volume/test_data`
+
 #### Run the project
 
 * build Docker image: `cd mlflow_test && docker build -t mnist-dockerized -f Dockerfile .`
 
-* run this model from the home directory with `source venv/bin/activate && mlflow run mlflow_test -P path-to-data=/`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded. Metrics are saved to the `mlruns` directory.
+* run this model from the home directory with `source venv/bin/activate && mlflow run mlflow_test -P path-to-data=/data/`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded. Metrics are saved to the `mlruns` directory.
 
 ### Improvements
 
-  * data storage in a volume & data versioning
-  
-  * results saved to git
+  * results saved outside of VM
 
