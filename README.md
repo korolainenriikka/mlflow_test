@@ -4,7 +4,7 @@ this workflow:
   * creates a virtual machine and volume, sets them up and connects them to one another
   * copies data and mlflow project from git to the virtual env and runs the model
 
-the workflow setups' steps can be used for running any small-to-medium-scale mlproject. Only commands that need to be changed are the git URI:s, in the scp command the '\*.gz' part that specifies the files to copy, and the mlflow run command's project name and params. 
+the workflow setups' steps can be used for running any small-to-medium-scale mlproject in a CSC environment. Only commands that need to be changed are the git URI:s, in the scp command the '\*.gz' part that specifies the files to copy, and the mlflow run command's project name and params. 
 
 these instructions expect that you
   * have a valid CSC account
