@@ -59,7 +59,7 @@ these instructions expect that you
 
 * Connect volume to the VM: go to Compute/Instances and in the Actions dropdown choose 'Attach Volume'. Choose the volume and click 'Attach'.
 
-* On the VM terminal: run `mv mlflow_test/volumesetup.sh . && chmod u+x volume.sh && ./volumesetup.sh`
+* On the VM terminal: run `mv mlflow_test/volumesetup.sh . && chmod u+x volumesetup.sh && ./volumesetup.sh`
 
 ## Running the MLflow project
 
