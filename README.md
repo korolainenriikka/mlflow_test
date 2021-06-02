@@ -8,9 +8,9 @@ these instructions expect that you
   * have a valid CSC account
   * you are added to a project and granted access to servers
 
-### Initial setup instructions
+## Initial setup instructions
 
-#### Create and run a virtual machine instance & connect remotely
+### Create and run a virtual machine instance & connect remotely
 
 (this part is done as instructed in the [csc documentation](https://docs.csc.fi/cloud/pouta/launch-vm-from-web-gui/) and in the [CSC webinar on VM setup](https://www.youtube.com/watch?v=CIO8KRbgDoI))
 
@@ -29,7 +29,7 @@ these instructions expect that you
             
 3. create & run a virtual machine instance
                
-* lauch a VM instance
+* launch a VM instance
     * Go to Instances and click 'Lauch Instance'. Choose image (operating system) and flavour (amount of resources). On the access&security tab choose your key pair and the security group you created.
 
 * associate a floating IP (by default the virtual machines only have private IPs)
@@ -43,7 +43,7 @@ these instructions expect that you
         
     * run `ssh -l ubuntu [VM's floating IP]` to connect (Ubuntu VM)
 
-#### Install MLflow requirements
+### Install MLflow requirements
 
 (these instructions work with ubuntu 20)
 
@@ -53,7 +53,7 @@ these instructions expect that you
 
 * run `logout` to close ssh connection, shut off and re-launch the virtual machine in the cPouta web portal (this is required for the privilege modifications to take effect)
 
-#### Create a volume & mount to virtual machine
+### Create a volume & mount to virtual machine
 
 * Create a volume: on the web portal go to Volumes/Volumes and click Create Volume. Name the volume, add description and choose size. Choose "no source" as volume source.
 
@@ -63,19 +63,19 @@ these instructions expect that you
 
 ## Running the MLflow project
 
-#### Copy data to the volume
+### Copy data to the volume
 
 * On your local machine: run `git clone https://github.com/korolainenriikka/mnist-data.git` to clone the data
 
 * To copy the data to the volume run `cd mnist-data && scp -i [path-to-private-key-file] *.gz ubuntu@[vm floating IP]:/media/volume/test_data`
 
-#### Run the project
+### Run the project
 
 * build Docker image: `cd mlflow_test && docker build -t mnist-dockerized -f Dockerfile .`
 
 * run this model from the home directory with `source venv/bin/activate && mlflow run mlflow_test -P path-to-data=/data/`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded. Metrics are saved to the `mlruns` directory.
 
-### Improvements
+## Improvements
 
   * results saved outside of VM
 
