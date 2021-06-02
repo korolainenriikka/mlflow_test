@@ -71,7 +71,7 @@ these instructions expect that you
 
 ### Run the project
 
-* build Docker image: `cd mlflow_test && docker build -t mnist-dockerized -f Dockerfile .`
+* on the VM: build Docker image: `cd mlflow_test && docker build -t mnist-dockerized -f Dockerfile .`
 
 * run this model from the home directory with `source venv/bin/activate && mlflow run mlflow_test -P path-to-data=/data/`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded. Metrics are saved to the `mlruns` directory.
 
