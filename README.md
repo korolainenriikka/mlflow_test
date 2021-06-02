@@ -30,7 +30,7 @@ these instructions expect that you
 3. create & run a virtual machine instance
                
 * launch a VM instance
-    * Go to Instances and click 'Lauch Instance'. Choose image (operating system) and flavour (amount of resources). On the access&security tab choose your key pair and the security group you created.
+    * Go to Compute/Instances and click 'Lauch Instance'. Choose image (Ubuntu 20)and flavour (small suffices for this project). On the access&security tab choose your key pair and the security group you created.
 
 * associate a floating IP (by default the virtual machines only have private IPs)
     * on Instances tab in your vm instances' actions choose 'Associate Floating IP'. Choose IP or if none are present, click on the + to allocate a new one. Then click 'Associate'
