@@ -2,10 +2,11 @@ name: digit-recognition
 
 docker_env:
     image: mnist-dockerized
+    volumes: ["/media/volume/test_data:/data/"]
 
 entry_points:
   main:
     parameters:
-      path-to-data: {type: string, default: './data'}
+      path-to-data: {type: string, default: './data/'}
     command: "python train.py --path-to-data {path-to-data}"
 
