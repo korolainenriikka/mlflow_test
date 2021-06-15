@@ -1,5 +1,7 @@
 # Sample project for ML pipeline testing
 
+! the following instructions work on the tagged commit version of the code. The newest version works on a different setup.
+
 this workflow:
   * creates a virtual machine and volume, sets them up and connects them to one another
   * copies data and mlflow project from git to the virtual env and runs the model
