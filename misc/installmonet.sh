@@ -10,7 +10,7 @@ deb-src https://dev.monetdb.org/downloads/deb/ $suite monetdb" >> /etc/apt/sourc
 sudo wget --output-document=/etc/apt/trusted.gpg.d/monetdb.gpg https://www.monetdb.org/downloads/MonetDB-GPG-KEY.gpg &&
 chmod og+r /etc/apt/trusted.gpg.d/monetdb.gpg &&
 
-sudo apt update && sudo apt install monetdb5-sql monetdb-client &&
+sudo apt update && sudo apt install -y monetdb5-sql monetdb-client &&
 
 sudo systemctl enable monetdbd &&
 sudo systemctl start monetdbd &&
