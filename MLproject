@@ -6,6 +6,6 @@ docker_env:
 entry_points:
   main:
     parameters:
-      path-to-data: {type: string, default: 'mlflow_test/data/'}
+      path-to-data: {type: string, default: 'data/'}
     command: "python train.py --path-to-data {path-to-data}"
 
