@@ -51,4 +51,4 @@ if __name__ == "__main__":
         print("Digit prediction accuracy: %f" % accuracy)
 
         mlflow.log_metric("accuracy_score", accuracy)
-        mlflow.log_artifact("train.py)
+        #mlflow.log_artifact("train.py)
