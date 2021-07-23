@@ -42,8 +42,7 @@ if __name__ == "__main__":
     test_pixels = test_pixels1d.reshape(10000, 28*28)
     
     with mlflow.start_run():
-        #mlflow.log_param("virtual machine flavor", vm-flavor)
-        #mlflow.log_param("github uri", github-uri)
+        mlflow.log_artifact('vars')
         
         model = GaussianNB()
         model.fit(train_pixels, train_labels)
@@ -54,4 +53,4 @@ if __name__ == "__main__":
         print("Digit prediction accuracy: %f" % accuracy)
 
         mlflow.log_metric("accuracy_score", accuracy)
-        #mlflow.log_artifact("train.py)
+        mlflow.sklearn.log_model(model, "model")
