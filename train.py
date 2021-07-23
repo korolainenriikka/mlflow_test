@@ -42,7 +42,7 @@ if __name__ == "__main__":
     test_pixels = test_pixels1d.reshape(10000, 28*28)
     
     with mlflow.start_run():
-        mlflow.log_artifact('vars')
+        mlflow.log_artifact('../vars')
         
         model = GaussianNB()
         model.fit(train_pixels, train_labels)
