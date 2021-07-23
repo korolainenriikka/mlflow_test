@@ -6,8 +6,6 @@ docker_env:
 entry_points:
   main:
     parameters:
-      vm-flavor: string,
-      github-uri: string,
       path-to-data: {type: string, default: 'data/'}
-    command: "python train.py --path-to-data {path-to-data} --vm-flavor {vm-flavor} --github-uri {github-uri}"
+    command: "python train.py --path-to-data {path-to-data}"
 
