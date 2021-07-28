@@ -18,7 +18,7 @@ these instructions expect that you
 
 (this part is done as instructed in the [csc documentation](https://docs.csc.fi/cloud/pouta/launch-vm-from-web-gui/) and in the [CSC webinar on VM setup](https://www.youtube.com/watch?v=CIO8KRbgDoI))
 
-1. login to pouta [web portal](https://pouta.csc.fi/)
+1. login to pouta [web portal](https://pouta.csc.fi/) (or another openstack web portal)
 
 2. set up prerequisites
 
@@ -28,13 +28,13 @@ these instructions expect that you
 
 * set up firewall & security groups (!security settings have been moved in the ui after the tutorials above were made, current locations below:)
     * go to Network/Security Groups. Click 'Create Security Group' and add name and description
-    * click 'Manage Rules' for the newly created security group
-    * leave other fields to defaults, and insert '22' as port number (SSH port) and your IP address to the CIDR field. Use [your ip]/32 to only add one IP address. Run `curl -4 ident.me` to get your IP (or use another find-your-IP service)
+    * click 'Manage Rules' for the newly created security group. Then click 'Add rule'
+    * leave other fields to defaults, and insert '22' as port number (SSH port) and your IP address to the CIDR field. Use [your ip]/32 to only add one IP address. Run `curl -4 ident.me` to get your IP (or use another find-my-IP service)
             
 3. create & run a virtual machine instance
                
 * launch a VM instance
-    * Go to Compute/Instances and click 'Lauch Instance'. Choose image (Ubuntu-20.04) and flavour (small suffices for this project). On the access&security tab choose your key pair and the security group you created.
+    * Go to Compute/Instances and click 'Lauch Instance'. Choose 'Boot from image' and the image (Ubuntu-20.04) and flavour (tiny/small suffices for this purpose). On the access&security tab choose your key pair and the security group you created. Then click 'Launch'
 
 * associate a floating IP (by default the virtual machines only have private IPs)
     * on Instances tab in your vm instances' actions choose 'Associate Floating IP'. Choose IP or if none are present, click on the + to allocate a new one. Then click 'Associate'
