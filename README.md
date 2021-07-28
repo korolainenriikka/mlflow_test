@@ -27,7 +27,7 @@ these instructions expect that you
      or (if you have no ssh key pair on your device) create key pair with 'Create Key Pair' and save the downloaded .pem file
 
 * set up firewall & security groups (!security settings have been moved in the ui after the tutorials above were made, current locations below:)
-    * go to Compute/Network/Security Groups. Click 'Create Security Group' and add name and description
+    * go to Network/Security Groups. Click 'Create Security Group' and add name and description
     * click 'Manage Rules' for the newly created security group
     * leave other fields to defaults, and insert '22' as port number (SSH port) and your IP address to the CIDR field. Use [your ip]/32 to only add one IP address. Run `curl -4 ident.me` to get your IP (or use another find-your-IP service)
             
