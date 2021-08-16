@@ -5,6 +5,7 @@ This is a MLflow project using docker for testing one-step ML workflows.
 ## Run locally
 
 * Install docker and MLflow (`pip install mlflow`)
+
 In project root:
 * Run `docker build -t mnist-dockerized .` to build the docker image
 * Run `mlflow run .` to run the project
