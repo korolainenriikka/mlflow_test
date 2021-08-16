@@ -1,4 +1,15 @@
-# Sample project for ML pipeline testing
+# Sample project for MLflow
+
+This is a MLflow project using docker for testing one-step ML workflows.
+
+## Run locally
+
+* Install docker and MLflow (`pip install mlflow`)
+In project root:
+* Run `docker build -t mnist-dockerized .` to build the docker image
+* Run `mlflow run .` to run the project
+
+### Create a virtual environment for MLflow + Docker projects
 
 ! the following instructions work on the tagged commit version of the code. The newest version works on a different setup.
 
@@ -6,15 +17,15 @@ this workflow:
   * creates a virtual machine and volume, sets them up and connects them to one another
   * copies data and mlflow project from git to the virtual env and runs the model
 
-the workflow setups' steps can be used for running any small-to-medium-scale mlproject in a CSC environment. Only commands that need to be changed are the git URI:s, in the scp command the '\*.gz' part that specifies the files to copy, and the mlflow run command's project name and params. 
+the workflow setups' steps can be used for running any small-to-medium-scale mlproject in an OpenStack environment. Only commands that need to be changed are the git URI:s, in the scp command the '\*.gz' part that specifies the files to copy, and the mlflow run command's project name and params. 
 
 these instructions expect that you
-  * have a valid CSC account
+  * have a valid OpenStack account
   * you are added to a project and granted access to servers
 
-## Initial setup instructions
+### Initial setup instructions
 
-### Create and run a virtual machine instance & connect remotely
+#### Create and run a virtual machine instance & connect remotely
 
 (this part is done as instructed in the [csc documentation](https://docs.csc.fi/cloud/pouta/launch-vm-from-web-gui/) and in the [CSC webinar on VM setup](https://www.youtube.com/watch?v=CIO8KRbgDoI))
 
@@ -47,7 +58,7 @@ these instructions expect that you
         
     * run `ssh -l ubuntu [VM's floating IP]` to connect (Ubuntu VM)
 
-### Install MLflow requirements
+#### Install MLflow requirements
 
 (these instructions work with ubuntu 20)
 
@@ -57,7 +68,7 @@ these instructions expect that you
 
 * run `logout` to close ssh connection, shut off and re-launch the virtual machine in the cPouta web portal (this is required for the privilege modifications to take effect)
 
-### Create a volume & mount to virtual machine
+#### Create a volume & mount to virtual machine
 
 * Create a volume: on the web portal go to Volumes/Volumes and click Create Volume. Name the volume, add description and choose size. Choose "no source" as volume source.
 
@@ -65,21 +76,16 @@ these instructions expect that you
 
 * On the VM terminal: run `mv mlflow_test/volumesetup.sh . && chmod u+x volumesetup.sh && ./volumesetup.sh`
 
-## Running the MLflow project
+### Running the MLflow project
 
-### Copy data to the volume
+#### Copy data to the volume
 
 * On your local machine: run `git clone https://github.com/korolainenriikka/mnist-data.git` to clone the data
 
 * To copy the data to the volume run `cd mnist-data && scp -i [path-to-private-key-file] *.gz ubuntu@[vm floating IP]:/media/volume/test_data`
 
-### Run the project
+#### Run the project
 
 * on the VM: build Docker image: `cd mlflow_test && docker build -t mnist-dockerized -f Dockerfile .`
 
 * run this model from the home directory with `source venv/bin/activate && mlflow run mlflow_test -P path-to-data=/data/`. If 'Digit prediction accuracy: ...' is printed, setup has succeeded. Metrics are saved to the `mlruns` directory.
-
-## Improvements
-
-  * results saved outside of VM
-
