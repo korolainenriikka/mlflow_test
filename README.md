@@ -10,7 +10,7 @@ In project root:
 * Run `docker build -t mnist-dockerized .` to build the docker image
 * Run `mlflow run .` to run the project
 
-### Create a virtual environment for MLflow + Docker projects
+## Create a virtual environment for MLflow + Docker projects
 
 ! the following instructions work on the tagged commit version of the code. The newest version works on a different setup.
 
